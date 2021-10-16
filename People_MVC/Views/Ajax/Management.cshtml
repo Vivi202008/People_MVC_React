@@ -1,0 +1,65 @@
+﻿@using People_MVC.Models
+
+@model PeopleViewModel
+@{
+    ViewBag.Title = "Management";
+}
+<h3>Welcome to Management</h3>
+
+<form>
+    <label asp-for="Search">Please input an ID to search</label>
+    <input asp-for="Search" id="searchID" />
+
+    <input type="button"  asp-controller="Ajax" asp-action="PersonDetails" data-target="dvShow" value="Display" class="btn btn-primary" id="btnDisplay" />
+    <input type="button" asp-controller="Ajax" asp-action="Delete" data-target="dvShow" value="Delete"  class="btn btn-success" id="btnDelete" />
+    <input type="button" asp-controller="Ajax" asp-action="ShowAll" data-target="dvShow" value="DisplayAll" id="btnDisplayAll" class="btn btn-secondary" />
+</form>
+
+<div class="row">
+    <div class="col-md-8 col-lg-offset-3">
+        <h2 hidden>People's record</h2>
+    </div>
+
+</div>
+<div id="dvShow">
+    <h1>Result</h1>
+</div>
+
+<style>
+    #table tr th {
+        color: white;
+        width: 500px;
+        height: 40px;
+        text-decoration: solid;
+        background-color: yellowgreen;
+        padding: 10px;
+    }
+</style>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+    $("#btnDisplay").click(function (e) {
+        e.preventDefault();
+        var_this = $(this);
+        $('#dvShow').text("Search By ID and Display!");
+        var id = $("#searchID").val();
+        $('#dvShow').load("/Ajax/PersonDetails", { ID: id });
+    });
+
+    $("#btnDelete").click(function (e) {
+        e.preventDefault();
+        var_this = $(this);
+        $('#dvShow').text("Delete By ID");
+
+          var id = $("#searchID").val();
+        $('#dvShow').load("/Ajax/Delete", { ID: id });
+        alert(id+" has deleted.");
+    });
+    $("#btnDisplayAll").click(function (e) {
+        e.preventDefault();
+        var_this = $(this);
+        $('#dvShow').text("Display All!");
+        $('#dvShow').load("/Ajax/Show");
+    });
+</script>

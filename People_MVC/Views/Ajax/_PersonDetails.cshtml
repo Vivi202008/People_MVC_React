@@ -1,0 +1,35 @@
+﻿@model People_MVC.Models.Person
+
+<h2>Person Details</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(m => Model.PersonId)</th>
+            <th scope="col">@Html.DisplayNameFor(m => Model.Name)</th>
+            <th scope="col">@Html.DisplayNameFor(m => Model.TeleNumber)</th>
+            <th scope="col">@Html.DisplayNameFor(m => Model.City)</th>
+            <th scope="col">@Html.DisplayNameFor(m => Model.City.Country)</th>
+            <th scope="col">@Html.DisplayNameFor(m => Model.PersonLanguages)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="col">@Html.DisplayFor(m => Model.PersonId)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.Name)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.TeleNumber)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.City.Name)</th>
+
+            @foreach (var asset in ViewBag.data)
+            {
+                if (asset.PId == Model.PersonId)
+                {
+                    <th scope="col">@asset.CountryName</th>
+                    <th scope="col">@asset.PLanguages)</th>
+                }
+            }
+            
+        </tr>
+    </tbody>
+</table>
+
+<p>Updated at @DateTime.Now</p>

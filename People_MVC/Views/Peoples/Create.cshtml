@@ -1,0 +1,47 @@
+﻿@model CreatePersonViewModel
+
+@{
+    ViewData["Title"] = "Creat";
+}
+
+<h1>Creat</h1>
+@using (Html.BeginForm())
+{
+<form class="form-horizontal" asp-action="Create" asp-controller="Peoples" method="post">
+
+    <label class="col-sm-2 control-label" asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+    <p></p>
+    <label class="col-sm-2 control-label" asp-for="City"></label>
+    @*@Html.DropDownList("cities-dropdownlist", ViewBag.cities as IEnumerable<SelectListItem>, new { @class = "btn btn-success dropdown-toggle form-control" })
+            @Html.DropDownList("CityId", ViewData["citySelectList"] as SelectList, "choose city", new { @class = "form-control  input-small" })
+        <select class="form-select" name="CityId" asp-items="ViewBag.Cities">
+        </select>
+        <span asp-validation-for="City"></span>*@
+    <select asp-for="City" asp-items=@ViewBag.Cities></select>
+    <span asp-validation-for="City" class="text-danger"></span>
+    <p></p>
+    <label class="col-sm-2 control-label" asp-for="Languages"></label>
+    <select class="form-select" name="LanguageIds" asp-items="ViewBag.Languages" multiple>
+    </select>
+    <p></p>
+    <p></p>
+    <label class="col-sm-2 control-label" asp-for="TeleNumber"></label>
+    <input asp-for="TeleNumber" />
+    <span asp-validation-for="TeleNumber"></span>
+    <p></p>
+    <button class="btn-primary" type="submit">Create</button>
+    <button class="badge-danger" type="reset">Reset</button>
+</form>
+            }
+
+
+@*@foreach (var item in PeopleViewModel.PeopleList)
+{
+    @await Html.PartialAsync("_People", item);
+}*@
+
+
+
+

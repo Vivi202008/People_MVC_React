@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityAppUsers>
+    SignInManager
+    @inject UserManager<IdentityAppUsers>
+        UserManager
+
+        <html>
+
+        <head>
+            <meta charset="utf-8" />
+
+            <title>Hello People CMS_React!</title>
+
+            <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+            <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+            <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        </head>
+        <body>
+            <h3>
+                This is a React Single Page Application (SPA) that serves as a Control &
+                Manage System (CMS) for a people list!
+            </h3>
+
+            <!-- Load our React component. -->
+            <div id="sort_button_container">
+                <label>sortbutton</label>
+            </div>
+            <script src="build/static/js/sort_button.jsx"></script>
+
+            <div id="create_button_container">
+                <label>createbutton</label>
+            </div>
+            <script src="build/static/js/create_button.jsx"></script>
+
+            <div id="list">
+                <label>list</label>
+            </div>
+            <script src="build/static/js/list.jsx"></script>
+
+            <div id="detail">
+                <label>detail</label>
+            </div>
+            <script src="build/static/js/detail.jsx"></script>
+
+            <div id="create">
+                <label>create</label>
+            </div>
+            <script src="build/static/js/create.jsx"></script>
+
+        </body>
+    </html>

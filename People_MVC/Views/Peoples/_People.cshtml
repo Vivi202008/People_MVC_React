@@ -1,0 +1,22 @@
+﻿@model People_MVC.Models.Person
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <table class="table table-striped">
+  
+        <tbody>
+            <tr>
+                <th scope="col">@Html.DisplayFor(m => Model.PersonId)</th>
+                <th scope="col">@Html.DisplayFor(m => Model.Name)</th>
+                <th scope="col">@Html.DisplayFor(m => Model.TeleNumber)</th>
+                <th scope="col">@Html.DisplayFor(m => Model.City.Name)</th>
+                <th scope="col">@Html.DisplayFor(m => Model.City.Country)</th>
+
+                <th scope="col">@Html.DisplayFor(m => Model.PersonLanguages)</th>
+
+                <th><a asp-action="EditPerson" asp-route-id="@Model.PersonId" class="btn btn-primary">Edit</a></th>
+                <th><a asp-action="Delete" asp-route-id="@Model.PersonId" class="btn btn-primary">Delete</a></th>
+            </tr>
+        </tbody>
+
+    </table>
+

@@ -1,0 +1,24 @@
+﻿
+@model People_MVC.Models.Person;
+
+<table class="table">
+    <tbody>
+        <tr>
+          @foreach (var asset in ViewBag.SearchData)
+            { 
+                <tr>
+        <td>@asset.PId</td>
+        <td>@asset.PName</td>
+        <td>@asset.Phone</td>
+        <td>@asset.CityName</td>
+        <td>@asset.CountryName</td>
+        <td>@asset.PLanguages</td>
+
+        <td>
+            <a class="btn btn-primary" onclick="Update('@asset.PId')">Edit</a>
+            <a class="btn btn-primary" onclick="Delete('@asset.PId')">Delete</a>
+        </td>
+    
+        </tr>}
+    </tbody>
+</table>

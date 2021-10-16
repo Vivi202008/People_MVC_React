@@ -1,0 +1,25 @@
+﻿@model People_MVC.Models.Person
+
+<table class="table">
+    <tbody>       
+        <tr>
+            <th scope="col">@Html.DisplayFor(m => Model.PersonId)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.Name)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.TeleNumber)</th>
+            <th scope="col">@Html.DisplayFor(m => Model.City.Name)</th>
+            @foreach (var asset in ViewBag.data)
+            {
+                if (asset.PId == Model.PersonId)
+                {
+                    <th scope="col">@asset.CountryName</th>
+                    <th scope="col">@asset.PLanguages)</th>
+                 }
+            }
+
+
+            <th><a asp-action="Delete" asp-route-id="@Model.PersonId">Delete</a></th>
+        </tr>       
+    </tbody>
+</table>
+
+

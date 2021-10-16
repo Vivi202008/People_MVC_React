@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Person; 
+@{
+}
+
+
+    <td><input id="Name-@Model.PersonId" type="text" name="Name" for="FirstName" value="@Model.Name" /></td>
+    
+    <td><input type="text" name="PersonId" for="Id" value="@Model.PersonId" hidden /></td>
+
+    <td>
+        <select id="cityId-@Model.PersonId" for="CityId" name="CityId">
+            @foreach (SelectListItem city in ViewBag.Cities)
+            {
+
+                if (Model.City.CityId.ToString().Equals(city.Value))
+                {
+                    <option selected value="@city.Value">@city.Text</option>
+                }
+                else
+                {
+                    <option value="@city.Value">@city.Text</option>
+                }
+            }
+        </select>
+    </td>
+
+    <td><input id="phoneNr-@Model.PersonId" type="text" name="TeleNumber" for="TeleNumber" value="@Model.TeleNumber" /></td>
+
+   
+    <td>
+        <select id="languageIds-@Model.PersonId" name="LanguageIds" for="LanguageIds" multiple>
+            @foreach (SelectListItem language in ViewBag.Languages)
+            {
+
+                if (Model.PersonLanguages.Exists(l => l.PersonId.ToString().Equals(language.Value)))
+                {
+                    <option selected value="@language.Value">@language.Text</option>
+                }
+                else
+                {
+                    <option value="@language.Value">@language.Text</option>
+                }
+            }
+        </select>
+    </td>
+
+    <td><button type="submit" class="btn btn-primary edit-submit-btn" name="@Model.PersonId" value="Edit">Edit</button></td>
+
+    <td class="td-btn">
+        <button id="@Model.PersonId" class="edit-btn btn-dark btn">
+            Cancel
+        </button>
+    </td>
+

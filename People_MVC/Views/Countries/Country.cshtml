@@ -1,0 +1,17 @@
+﻿@model Country
+
+
+<tr>
+    <td>@Model.CountryId</td>
+    <td>@Model.Name</td>
+    <td>
+        @foreach (City city in @Model.Cities)
+        {
+            <p>@city.Name</p>
+         }
+    </td>
+    <td><a asp-controller="Countries" asp-action="DeleteCountry" asp-route-id="@Model.CountryId">Delete</a></td>
+</tr>
+
+
+
